@@ -2,12 +2,14 @@ pipeline {
     agent { label 'Jenkins_Node1' }
 	
 	environment {
-		registry = "saikirangude12/hello-world"
-		PROJECT_ID = 'jenkins-296812'
-                CLUSTER_NAME = 'k8s-cluster'
-                LOCATION = 'us-central1-c'
-                CREDENTIALS_ID = 'kubernetes'		
-	           }
+          registry = "saikirangude12/hello-world"
+          registryCredential = 'DockerHub'
+          dockerImage = ''
+          PROJECT_ID = 'avi-new'
+          CLUSTER_NAME = 'cluster-1'
+          LOCATION = 'us-central1-c'
+          CREDENTIALS_ID = 'avi-test'
+          }
 	
     stages {
 	  stage('Building image') {
