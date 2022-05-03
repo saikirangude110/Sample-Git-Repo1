@@ -31,5 +31,12 @@ pipeline {
       }
     }
 
+	  stage('Clean Workspace') {
+          steps{
+            script {
+              sh 'docker rmi saikirangude12/hello-world:latest'
+          }
+        }
+      }
     }
 }
