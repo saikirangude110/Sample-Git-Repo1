@@ -4,6 +4,7 @@ pipeline {
 	environment {
           registry = "saikirangude12/hello-world"
           registryCredential = 'DockerHub'
+	  latest = 'v5.0'
           dockerImage = ''
           PROJECT_ID = 'avi-new'
           CLUSTER_NAME = 'cluster-1'
@@ -15,7 +16,7 @@ pipeline {
 	  stage('Building image') {
           steps {
 		    script {
-		    dockerImage = docker.build registry + ":v4.0"
+		    dockerImage = docker.build registry + :latest
 	        }
 	    }
         }
