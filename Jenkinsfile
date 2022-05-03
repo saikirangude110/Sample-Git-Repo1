@@ -38,5 +38,18 @@ pipeline {
           }
         }
       }
+
+        stage('Kubernetes Deployment') {
+        agent {
+        label 'Jenkins_Node1'
+        }
+            steps{
+	          git credentialsId: 'GitHub_Credentials', url: 'https://github.com/saikirangude110/Docker_Kubernetes_Deployment.git'
+              sh 'gcloud auth activate-service-account --key-file=demo1-346508-c6caaf27f6f9.json'
+	          sh 'gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1 --project demo1-346508'
+              sh 'helm install ./cvhello-world --generate-name'
+        }
+		  }
+
     }
 }
